@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import "../App.css";
 
-import { Container, Divider, Card } from "semantic-ui-react";
+import { Container, Divider, Card, Grid, Segment } from "semantic-ui-react";
 
 import Navbar from "./Navbar";
 import WeekView from "./WeekView";
@@ -68,15 +68,17 @@ class App extends Component {
   };
 
   drag = ev => {
-    console.log("happening", ev.target);
     ev.dataTransfer.setData("text", ev.target.id);
   };
 
   drop = ev => {
     ev.preventDefault();
-    console.log(ev.target, ev.dataTransfer, ev);
     var data = ev.dataTransfer.getData("text");
-    ev.target.appendChild(document.getElementById(data));
+    // ev.target.appendChild(document.getElementById(data));
+    var nodeCopy = document.getElementById(data).cloneNode(true);
+    nodeCopy.id = "newId";
+    nodeCopy.setAttribute("draggable", false);
+    ev.target.appendChild(nodeCopy);
   };
 
   render() {
@@ -87,10 +89,22 @@ class App extends Component {
       <div className="App">
         <Navbar handlePage={this.handlePage} />
         <Divider hidden />
-        <Container>{activePage}</Container>
-        <Divider hidden />
-        <Container>
-          <Card.Group itemsPerRow={7}>{mealCards}</Card.Group>
+        <Container transparent>
+          <Grid>
+            <Grid.Row>
+              <Grid.Column width={6}>
+                <Container>{activePage}</Container>
+              </Grid.Column>
+              <Divider />
+              <Grid.Column
+                width={10}
+                onDrop={this.drop}
+                onDragOver={this.allowDrop}
+              >
+                <Card.Group itemsPerRow={3}>{mealCards}</Card.Group>
+              </Grid.Column>
+            </Grid.Row>
+          </Grid>
         </Container>
       </div>
     );
