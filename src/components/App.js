@@ -15,7 +15,7 @@ class App extends Component {
     super();
 
     this.state = {
-      page: "week",
+      sidebar: "week",
       meals: [
         { name: "meal 1", time: "20min" },
         { name: "meal 2", time: "30min" },
@@ -25,12 +25,12 @@ class App extends Component {
     };
   }
 
-  handlePage = page => {
-    this.setState({ page: page });
+  activeSidebar = sidebar => {
+    this.setState({ sidebar: sidebar });
   };
 
-  handleActivePage = page => {
-    switch (page) {
+  handleActiveSidebar = sidebar => {
+    switch (sidebar) {
       case "week":
         return (
           <WeekView
@@ -82,18 +82,18 @@ class App extends Component {
   };
 
   render() {
-    const activePage = this.handleActivePage(this.state.page);
+    const activeSidebar = this.handleActiveSidebar(this.state.sidebar);
     const mealCards = this.handleMealCards(this.state.meals);
 
     return (
       <div className="App">
-        <Navbar handlePage={this.handlePage} />
+        <Navbar handlePage={this.handleSidebar} />
         <Divider hidden />
         <Container transparent>
           <Grid>
             <Grid.Row>
               <Grid.Column width={6}>
-                <Container>{activePage}</Container>
+                <Container>{activeSidebar}</Container>
               </Grid.Column>
               <Divider />
               <Grid.Column
