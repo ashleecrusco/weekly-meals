@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import "../App.css";
 
-import { Container, Divider, Card, Grid, Segment } from "semantic-ui-react";
+import { Container, Divider, Card, Grid, Input } from "semantic-ui-react";
 
 import Navbar from "./Navbar";
 import WeekView from "./WeekView";
@@ -17,13 +17,21 @@ class App extends Component {
     this.state = {
       page: "week",
       meals: [
-        { name: "meal 1", time: "20min" },
-        { name: "meal 2", time: "30min" },
-        { name: "meal 3", time: "60min" },
-        { name: "meal 4", time: "10min" }
+        { name: "meal 1", time: "20min", tags: ["fast", "dinner"] },
+        { name: "meal 2", time: "30min", tags: ["lunch"] },
+        {
+          name: "meal 3",
+          time: "60min",
+          tags: ["healthy", "dinner", "favorite"]
+        },
+        { name: "meal 4", time: "10min", tags: [] }
       ]
     };
   }
+
+  handleChange = e => {
+    console.log(e.target.value);
+  };
 
   handlePage = page => {
     this.setState({ page: page });
@@ -89,7 +97,7 @@ class App extends Component {
       <div className="App">
         <Navbar handlePage={this.handlePage} />
         <Divider hidden />
-        <Container transparent>
+        <Container>
           <Grid>
             <Grid.Row>
               <Grid.Column width={6}>
@@ -101,6 +109,14 @@ class App extends Component {
                 onDrop={this.drop}
                 onDragOver={this.allowDrop}
               >
+                <Divider hidden />
+                <Input
+                  fluid
+                  icon="search"
+                  placeholder="Search..."
+                  onChange={this.handleChange}
+                />
+                <Divider hidden />
                 <Card.Group itemsPerRow={3}>{mealCards}</Card.Group>
               </Grid.Column>
             </Grid.Row>

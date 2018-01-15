@@ -1,9 +1,21 @@
 import React, { Component } from "react";
-import { Card } from "semantic-ui-react";
+import { Card, Label, Divider } from "semantic-ui-react";
+import Tag from "./Tag";
 
 class MealCard extends Component {
+  createTags = tags => {
+    if (tags.length > 0) {
+      return tags.map(tag => {
+        return <Tag tag={tag} key={tag} />;
+      });
+    } else {
+      return null;
+    }
+  };
+
   render() {
-    console.log(this.props.meal);
+    const tagGroup = this.createTags(this.props.meal.tags);
+
     return (
       <Card
         id={this.props.meal.name}
@@ -16,6 +28,9 @@ class MealCard extends Component {
           <Card.Description>
             Matthew is a pianist living in Nashville.
           </Card.Description>
+        </Card.Content>
+        <Card.Content extra>
+          <Label.Group size="mini">{tagGroup}</Label.Group>
         </Card.Content>
       </Card>
     );

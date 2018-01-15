@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { Icon, Table } from "semantic-ui-react";
+import { Table } from "semantic-ui-react";
 
 class WeekView extends Component {
   render() {
@@ -7,7 +7,6 @@ class WeekView extends Component {
       <Table celled>
         <Table.Header>
           <Table.Row textAlign="center">
-            {" "}
             <Table.HeaderCell collapsing>Day</Table.HeaderCell>
             <Table.HeaderCell>Meal</Table.HeaderCell>
           </Table.Row>
@@ -41,7 +40,6 @@ class WeekView extends Component {
             />
           </Table.Row>
           <Table.Row textAlign="center">
-            {" "}
             <Table.Cell collapsing>Thursday</Table.Cell>
             <Table.Cell
               id="thursday"
@@ -51,7 +49,6 @@ class WeekView extends Component {
             />
           </Table.Row>
           <Table.Row textAlign="center">
-            {" "}
             <Table.Cell collapsing>Friday</Table.Cell>
             <Table.Cell
               id="friday"
@@ -61,7 +58,6 @@ class WeekView extends Component {
             />
           </Table.Row>
           <Table.Row textAlign="center">
-            {" "}
             <Table.Cell collapsing>Saturday</Table.Cell>
             <Table.Cell
               id="saturday"
@@ -71,7 +67,6 @@ class WeekView extends Component {
             />
           </Table.Row>
           <Table.Row textAlign="center">
-            {" "}
             <Table.Cell collapsing>Sunday</Table.Cell>
             <Table.Cell
               id="sunday"
