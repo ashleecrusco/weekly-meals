@@ -7,6 +7,7 @@ class Navbar extends Component {
   };
 
   render() {
+    let date = new Date();
     return (
       <div>
         <Menu attached="top">
@@ -45,15 +46,7 @@ class Navbar extends Component {
             </Dropdown.Menu>
           </Dropdown>
 
-          <Menu.Menu position="right">
-            <div className="ui right aligned category search item">
-              <div className="ui transparent icon input">
-                <input className="prompt" type="text" placeholder="Search..." />
-                <i className="search link icon" />
-              </div>
-              <div className="results" />
-            </div>
-          </Menu.Menu>
+          <Menu.Item position="right">{date.toDateString()}</Menu.Item>
         </Menu>
       </div>
     );
