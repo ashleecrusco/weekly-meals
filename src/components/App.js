@@ -15,7 +15,7 @@ class App extends Component {
     super();
 
     this.state = {
-      page: "week",
+      sidebar: "week",
       meals: [
         { name: "meal 1", time: "20min", tags: ["fast", "dinner"] },
         { name: "meal 2", time: "30min", tags: ["lunch"] },
